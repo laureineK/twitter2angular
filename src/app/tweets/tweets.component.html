@@ -1,0 +1,21 @@
+<h1 class="center">TWEET LIST ...</h1>
+
+<ul class="list">
+  <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="90" >
+    <div *ngIf="undefined !== tweets">
+      <ng-container *cdkVirtualFor="let tweet of tweets">
+          <li> LE {{tweet.created_at}}, {{tweet.user.name}} A TWEETE : {{tweet.full_text}} </li>
+      </ng-container>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</ul>
+
+
+
+
+
+
+
+
+
+
