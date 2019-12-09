@@ -1,13 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  font-family: 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #507ce8;
-  color: #fff;
-  overflow: hidden;
-}
 
 ul {
-  max-width: 500px;
+  max-width: 1000px;
   color: #333;
   list-style: none;
   margin: 50px auto;
@@ -16,14 +10,45 @@ ul {
 
 .list li {
   padding: 25px;
-  background: #FAFAAF;
+  background-color: #EEE;
   border-radius: 5px;
   margin-bottom: 5px;
-  text-align: center;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
 }
 
 .center {
   text-align: center;
+  color: #507ce8;
+}
+
+li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+li.selected {
+  background-color: #CFD8DC;
+  color: #507ce8;
+}
+li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+
+.badge {
+  display: inline-block;
+  font-size: x-large;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
 }

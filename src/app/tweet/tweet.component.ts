@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Tweet} from '../tweet';
+
 
 @Component({
   selector: 'app-tweet',
@@ -8,10 +9,5 @@ import {Tweet} from '../tweet';
 })
 export class TweetComponent {
   @Input() tweet: Tweet;
-  @Input() retweet: Tweet;
-  @Output() action = new EventEmitter<{property: string, tweet: Tweet}>();
   constructor() { }
-  toggleAction(property: 'update'|'retweet') {
-    this.action.emit({property, tweet: this.tweet});
-  }
 }

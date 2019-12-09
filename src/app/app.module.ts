@@ -10,6 +10,7 @@ import { TweetPipe } from './tweet.pipe';
 import { ClrIconModule} from '@clr/angular';
 import { ClarityModule} from '@clr/angular';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AppRoutingModule,
     ClrIconModule,
     ClarityModule,
-    ScrollingModule
+    ScrollingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

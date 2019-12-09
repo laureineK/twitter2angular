@@ -6,7 +6,9 @@ export interface TwitterResponse {
   data: any;
   resp: any;
 }
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TwitterService {
 
   constructor(private http: HttpClient) { }
@@ -15,8 +17,5 @@ export class TwitterService {
   }
   home() {
     return this.http.get<TwitterResponse>(`${environment.api}/home`);
-  }
-  action(property: 'update'|'retweet', id: string, state: boolean) {
-    return this.http.post<TwitterResponse>(`${environment.api}/${property}/${id}`, {state});
   }
 }
