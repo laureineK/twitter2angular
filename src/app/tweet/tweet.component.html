@@ -1,29 +1,21 @@
-<div *ngIf="tweet">
 
-  <h2>{{tweet.text | uppercase}} Details</h2>
-  <div><span>id: </span>{{tweet.id}}</div>
-  <div>
-    <label> Tweet complet:
-      <input [(ngModel)]="tweet.full_text"/>
-    </label>
-  </div>
-  <div>
-    <label> Date de creation:
-      <input [(ngModel)]="tweet.created_at"/>
-    </label>
-  </div>
-  <div>
-    <label> Nombre de retweet:
-      <input [(ngModel)]="tweet.retweet_count"/>
-    </label>
-  </div>
-  <div>
-    <label> Nombre de hashtags:
-      <input [(ngModel)]="tweet.entities.hashtags.length"/>
-    </label>
+
+  <div class="container mt-5 mb-5">
+    <h1>Tweet Details</h1>
+    <div *ngIf="tweets">
+    <div class="card-columns" *ngFor="let tweet of (tweets | selectedTweetPipe: id)">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Name</h5>
+          <p class="card-text">{{tweet.full_text}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <a class="btn btn-primary" [routerLink]="['/tweets']">Back To Product Listing</a>
   </div>
 
-</div>
+
 
 
 

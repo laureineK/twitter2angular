@@ -23,8 +23,4 @@ export class TweetsComponent implements OnInit {
       });
     });
   }
-
-  onSelect(tweet: Tweet): void {
-    this.selectedTweet = tweet;
-  }
 }
