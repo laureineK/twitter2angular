@@ -1,20 +1,28 @@
+<div class="center-div" >
+    <h1 class="center">Tweet Details</h1>
+    <div *ngIf="tweet">
+      <div class="details-tweet">
+          <h4>Texte Complet Tweet :</h4>
+          <p>{{tweet.full_text}}</p>
 
+          <h4>Date de Creation :</h4>
+          <p>{{tweet.created_at}}</p>
 
-  <div class="container mt-5 mb-5">
-    <h1>Tweet Details</h1>
-    <div *ngIf="tweets">
-    <div class="card-columns" *ngFor="let tweet of (tweets | selectedTweetPipe: id)">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Name</h5>
-          <p class="card-text">{{tweet.full_text}}</p>
-        </div>
+          <h4>Nombre de retweet : {{ tweet.retweet_count}}</h4>
+
+          <h4>Liste de Hashtags : {{tweet.entities.hashtags.length}}</h4>
       </div>
     </div>
+    <div>
+      <a class="btn btn-primary" [routerLink]="['/tweets']">Back To Tweet List</a>
+      <br><br>
     </div>
-    <a class="btn btn-primary" [routerLink]="['/tweets']">Back To Product Listing</a>
-  </div>
-
+    <div class="mdc-card__action">
+      <button class="mdc-card__action--button">
+        <span (click)="mailMe()">Send Tweet By Mail</span>
+      </button>
+    </div>
+</div>
 
 
 

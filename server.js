@@ -20,7 +20,7 @@ app.use(require('body-parser').json());
 
 //this first endpoint will be used to retrieve the 10 latest tweets on your timeline
 app.get('/api/home', (req, res) => {
-  const params = { tweet_mode: 'extended', count: 10 }
+  const params = { tweet_mode: 'extended', count: 11}
 
   api_client
     .get('statuses/home_timeline', params)
@@ -30,29 +30,6 @@ app.get('/api/home', (req, res) => {
     .catch(error => {
       res.send(error);
     });
-});
-
-//this endpoint is for posting tweets
-app.post('/api/post_tweet', (req, res) => {
-  tweet = req.body;
-  api_client
-    .post(`statuses/update`, tweet)
-    .then(tweet => {
-      console.log(tweet);
-      res.send(tweet);
-    })
-    .catch(error => {res.send(error);
-    });
-
-});
-
-//this endpoint is for retweeting
-app.post('/api/retweet/:id', (req, res) => {
-  const path = req.body.state ? 'retweet' : 'unretweet';
-  api_client
-    .post(`statuses/retweet/${req.params.id}`)
-    .then(tweet => res.send(tweet))
-    .catch(error => res.send(error));
 });
 
 app.get('/api/user', (req, res) => {
@@ -65,5 +42,17 @@ app.get('/api/user', (req, res) => {
       res.send(error);
     });
 });
+
+app.get('/api/test/:id', (req, res) => {
+  api_client
+    .get(`statuses/show/${req.params.id}`)
+    .then(user => {
+      res.send(user);
+    })
+    .catch(error => {
+      res.send(error);
+    });
+});
+
 
 app.listen(3000, () => console.log('Server running'));

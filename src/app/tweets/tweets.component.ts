@@ -10,6 +10,7 @@ import {TwitterService} from '../twitter.service';
 export class TweetsComponent implements OnInit {
   tweets: Tweet[] = [];
   selectedTweet: Tweet;
+  id: string;
 
   constructor(private twitter: TwitterService) {
   }
@@ -23,4 +24,10 @@ export class TweetsComponent implements OnInit {
       });
     });
   }
+  setSelectedTweet(selected: Tweet, id: number) {
+    this.selectedTweet = selected;
+    this.twitter.setSelectedTweet(selected, id);
+  }
 }
+
+

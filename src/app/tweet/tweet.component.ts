@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Tweet} from '../tweet';
-import { ActivatedRoute} from '@angular/router';
 import { TwitterService} from '../twitter.service';
 
 @Component({
@@ -8,25 +7,21 @@ import { TwitterService} from '../twitter.service';
   templateUrl: './tweet.component.html',
   styleUrls: ['./tweet.component.scss']
 })
-export class TweetComponent implements OnInit, OnDestroy {
-  private id: number;
-  tweets: Tweet[];
-  private sub: any;
-  constructor(private twitterService: TwitterService, private route: ActivatedRoute) {}
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(params => { this.id = +params.id; });
-    console.log('voici: : ' + this.id);
+export class TweetComponent implements OnInit {
+  tweet: Tweet;
+  tweetMail = '';
+  mailText = '';
+  constructor(private twitterService: TwitterService) {}
+  ngOnInit(): void {
     this.getTweets();
   }
   getTweets(): void {
-    this.twitterService.home().subscribe(tweets => {
-      tweets.data.reverse().forEach(tweet => {
-        this.tweets.unshift(tweet);
-      });
-    });
+    this.tweet = this.twitterService.getSelectedTweet();
+    this.mailText = 'Le ' + this.tweet.created_at + ' ,' + this.tweet.user.name + ' a Tweete : << ' + this.tweet.full_text + ' >>';
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  mailMe() {
+    this.tweetMail = 'mailto:laureinestella@gmail.com?subject=Tweet Details&body=' + this.mailText;
+    window.location.href = this.tweetMail;
   }
 }

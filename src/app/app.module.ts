@@ -7,10 +7,7 @@ import { AppComponent } from './app.component';
 import { TweetComponent } from './tweet/tweet.component';
 import { TweetsComponent } from './tweets/tweets.component';
 import { TweetPipe } from './tweet.pipe';
-import { ClrIconModule} from '@clr/angular';
-import { ClarityModule} from '@clr/angular';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,10 +20,7 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ClrIconModule,
-    ClarityModule,
-    ScrollingModule,
-    FormsModule
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
