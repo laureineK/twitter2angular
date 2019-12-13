@@ -1,22 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
 ul {
-  max-width: 1000px;
+  width: 80%;
   color: #333;
   list-style: none;
-  margin: 50px auto;
-  padding: 10px;
+  margin: 5% auto;
+  padding: 5%;
 }
 
 .list li {
-  padding: 25px;
+  padding: 5%;
   background-color: #EEE;
   border-radius: 5px;
-  margin-bottom: 5px;
-  font-size: 32px;
+  margin-bottom: 5%;
+  font-size: 2em;
   font-weight: 700;
   cursor: pointer;
   position: relative;
+  width: 100%;
 }
 
 .center {
@@ -36,6 +37,10 @@ li.selected {
 li.selected:hover {
   background-color: #BBD8DC;
   color: white;
+}
+.tweets-list {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .badge {

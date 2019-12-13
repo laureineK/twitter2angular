@@ -6,21 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TweetComponent } from './tweet/tweet.component';
 import { TweetsComponent } from './tweets/tweets.component';
-import { TweetPipe } from './tweet.pipe';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
     AppComponent,
     TweetComponent,
-    TweetsComponent,
-    TweetPipe
+    TweetsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    ScrollingModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,13 +20,12 @@ export class TweetsComponent implements OnInit {
   getTweets(): void {
     this.twitter.home().subscribe(tweets => {
       tweets.data.reverse().forEach(tweet => {
-          this.tweets.unshift(tweet);
+        this.tweets.unshift(tweet);
       });
     });
   }
-  setSelectedTweet(selected: Tweet, id: number) {
+  setSelectedTweet(selected: Tweet) {
     this.selectedTweet = selected;
-    this.twitter.setSelectedTweet(selected, id);
   }
 }
 

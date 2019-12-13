@@ -32,18 +32,7 @@ app.get('/api/home', (req, res) => {
     });
 });
 
-app.get('/api/user', (req, res) => {
-  api_client
-    .get('account/verify_credentials')
-    .then(user => {
-      res.send(user);
-    })
-    .catch(error => {
-      res.send(error);
-    });
-});
-
-app.get('/api/test/:id', (req, res) => {
+app.get('/api/detail/:id', (req, res) => {
   api_client
     .get(`statuses/show/${req.params.id}`)
     .then(user => {

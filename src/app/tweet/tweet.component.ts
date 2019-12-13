@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Tweet} from '../tweet';
-import { TwitterService} from '../twitter.service';
+import {TwitterService} from '../twitter.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-tweet',
@@ -9,19 +10,23 @@ import { TwitterService} from '../twitter.service';
 })
 export class TweetComponent implements OnInit {
   tweet: Tweet;
-  tweetMail = '';
   mailText = '';
-  constructor(private twitterService: TwitterService) {}
-  ngOnInit(): void {
-    this.getTweets();
+
+  constructor(private twitterService: TwitterService,
+              private route: ActivatedRoute) {
   }
-  getTweets(): void {
-    this.tweet = this.twitterService.getSelectedTweet();
-    this.mailText = 'Le ' + this.tweet.created_at + ' ,' + this.tweet.user.name + ' a Tweete : << ' + this.tweet.full_text + ' >>';
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.twitterService.getTwitById(params.get('id')).subscribe(tweet => {
+        this.tweet = tweet.data;
+        this.mailText = 'Le ' + this.tweet.created_at + ' ,' + this.tweet.user.name + ' a tweeté : << ' + this.tweet.text + ' >>';
+      });
+    });
   }
 
   mailMe() {
-    this.tweetMail = 'mailto:laureinestella@gmail.com?subject=Tweet Details&body=' + this.mailText;
-    window.location.href = this.tweetMail;
+    const tweetMail = 'mailto:laureinestella@gmail.com?subject=Tweet Details&body=' + this.mailText;
+    window.location.href = tweetMail;
   }
 }

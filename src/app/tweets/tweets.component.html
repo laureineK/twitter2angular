@@ -1,16 +1,15 @@
 <h1 class="center">10 DERNIERS TWEETS DE BANQUE POPULAIRE</h1>
 
-<ul class="list">
-    <div *ngIf="tweets">
-      <li *ngFor="let tweet of tweets; let index = index"
-          (click)="setSelectedTweet(tweet, tweet.id)"
-          [routerLink]="['/tweet', tweet.id]"
-      >
-        <span class="badge">{{index+1}}</span> {{tweet.full_text}}
-      </li>
-    </div>
-</ul>
-
+<div *ngIf="tweets" class="tweets-list">
+  <ul class="list">
+    <li *ngFor="let tweet of tweets ; let index = index"
+        (click)="setSelectedTweet(tweet)"
+        [routerLink]="['/tweet', tweet.id_str]"
+    >
+      <span class="badge">{{index+1}}</span> {{tweet.full_text}}
+    </li>
+  </ul>
+</div>
 
 
 
